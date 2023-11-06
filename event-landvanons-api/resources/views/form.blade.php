@@ -1,22 +1,22 @@
 <div class="container">
     <h2>Evenement aanmaken</h2>
-    <form method="post" action="/events">
+    <form method="post" action="{{route('event.store')}}">
         @csrf
         <div class="form-group">
-            <label for="name">Naam:</label>
-            <input id="name" type="text" name="name" class="form-control" required>
+            <label for="event_name">Naam:</label>
+            <input id="event_name" type="text" name="event_name" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="beginTime">Begin Tijd:</label>
-            <input id="beginTime" type="datetime-local" name="beginTime" class="form-control" required>
+            <label for="begin_time">Begin Tijd:</label>
+            <input id="begin_time" type="datetime-local" name="begin_time" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="endTime">Eind Tijd:</label>
-            <input id="endTime" type="datetime-local" name="endTime" class="form-control" required>
+            <label for="end_time">Eind Tijd:</label>
+            <input id="end_time" type="datetime-local" name="end_time" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="location">straatnaam:</label>
-            <input id="location" type="text" name="location" class="form-control" required>
+            <label for="street_name">straatnaam:</label>
+            <input id="street_name" type="text" name="street_name" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="house_number">huisnummer:</label>
@@ -27,8 +27,8 @@
             <input id="postal_code" type="text" name="postal_code" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="amountOfVolunteersNeeded">Aantal Benodigde Vrijwilligers:</label>
-            <input id="amountOfVolunteersNeeded" type="number" name="amountOfVolunteersNeeded" class="form-control" required>
+            <label for="amount_of_volunteers_needed">Aantal Benodigde Vrijwilligers:</label>
+            <input id="amount_of_volunteers_needed" type="number" name="amount_of_volunteers_needed" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="description">Beschrijving:</label>
