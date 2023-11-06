@@ -11,7 +11,7 @@ class HomeController extends Controller
      * Show the form for creating a new resource.
      */
     public function show() {
-        $events = Event::select('*')->get();
+        $events = Event::where('begin_time', '>', DATE(NOW()))->get();
         return view('welcome')->with('events', $events);
     }
 }
