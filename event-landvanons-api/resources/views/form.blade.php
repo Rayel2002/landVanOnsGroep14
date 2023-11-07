@@ -34,6 +34,6 @@
             <label for="description">Beschrijving:</label>
             <textarea id="description" name="description" class="form-control" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Evenement Aanmaken</button>
+        <button type="submit" name="submit" class="btn btn-primary">Evenement Aanmaken</button>
     </form>
 </div>
