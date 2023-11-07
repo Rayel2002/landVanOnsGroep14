@@ -1,5 +1,7 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<body style="background-color: #20c997;">
 <div class="container">
-    <h2>Evenement aanmaken</h2>
+    <h2 class="--bs-success-bg-subtle">Evenement aanmaken</h2>
     <form method="post" action="{{route('event.store')}}">
         @csrf
         <div class="form-group">
@@ -34,6 +36,7 @@
             <label for="description">Beschrijving:</label>
             <textarea id="description" name="description" class="form-control" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Evenement Aanmaken</button>
+        <button type="submit" class="btn btn-success">Evenement Aanmaken</button>
     </form>
 </div>
+</body>
