@@ -9,6 +9,7 @@ use Tests\DuskTestCase;
 
 class EventTest extends DuskTestCase
 {
+    use DatabaseMigrations;
 
     /**
      * @test
@@ -20,7 +21,6 @@ class EventTest extends DuskTestCase
             $browser->waitForReload(function (Browser $browser) {
                 $browser->visitRoute('event.create')
                     ->type('event_name', 'name1')
-
                     ->type('begin_time', '13')
                     ->type('begin_time', '09')
                     ->keys('#begin_time', ['{tab}'])
@@ -29,7 +29,6 @@ class EventTest extends DuskTestCase
                     ->type('begin_time', '30')
                     ->keys('#begin_time', ['{tab}'])
                     ->type('begin_time', '2019')
-
                     ->type('end_time', '13')
                     ->type('end_time', '09')
                     ->keys('#end_time', ['{tab}'])
@@ -38,7 +37,6 @@ class EventTest extends DuskTestCase
                     ->type('end_time', '30')
                     ->keys('#end_time', ['{tab}'])
                     ->type('end_time', '2020')
-
                     ->type('street_name', 'bla')
                     ->type('house_number', '2a')
                     ->type('postal_code', '1122ba')
@@ -62,7 +60,6 @@ class EventTest extends DuskTestCase
 
                     ->type('begin_time', '13')
                     ->type('begin_time', '09')
-                    ->type('begin_time', '2019')
                     ->keys('#begin_time', ['{tab}'])
                     ->type('begin_time', '19:30')
                     ->keys('#begin_time', ['{tab}'])
@@ -83,16 +80,16 @@ class EventTest extends DuskTestCase
                     ->type('house_number', '2a')
                     ->type('postal_code', '1122ba')
                     ->type('amount_of_volunteers_needed', '16')
-                    ->type('description', 'description');
-                $browser->press('submit');
+                    ->type('description', 'description')
+                    ->press('submit');
             });
             $browser->refresh();
         });
 
         $this->assertDatabaseHas('events', [
             'event_name' => 'name',
-            'begin_time' => '2019-09-13 19:30:00',
-            'end_time' => '2020-09-13 19:30:00',
+            'begin_time' => '2019-09-13T19:30',
+            'end_time' => '2020-09-13T19:30',
             'street_name' => 'bla',
             'house_number' => '2a',
             'postal_code' => '1122ba',
