@@ -12,7 +12,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::post('/register', 'App\Http\Controllers\UserController@register');
+//Route::post('/login', 'App\Http\Controllers\LoginController@login');
+//Route::get('/user', 'App\Http\Controllers\UserController@getUserDetails')->middleware('auth:sanctum');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::view('/swagger', 'swagger');
