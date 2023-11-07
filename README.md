@@ -24,6 +24,12 @@ $ php artisan serve
 
 en zou je project het moeten doen.
 
+## Package installeren voor model en permission
+-  composer require spatie/laravel-permission (De package die benodigde models voor role en permission bevat).
+-  php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"(het aanmaken van migration file voor permission en role tabel).
+-  php artisan migrate
+-  php artisan db:seed
+
 ## workflow Git
 1) $git commit\
    met een message met wat je exact hebt toegevoegd/verandert.
