@@ -232,6 +232,9 @@
       <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/spatie/laravel-permission" />
+      <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/php-webdriver/webdriver" />
+      <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/laravel/dusk" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

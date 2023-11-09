@@ -782,6 +782,13 @@
 </head>
 <body class="antialiased">
 <a href="{{route('event.create')}}">create new event</a>
+<div>
+    <label for="search">Zoek:</label>
+    <input id="search" name="search" type="text">
+    <label for="begin_time_sort">Van:</label>
+    <input id="begin_time_sort" type="datetime-local">
+    <label for="end_time_sort">tot:</label>
+</div>
 @if($events !== null)
     @foreach($events as $event)
         <div class="events">
