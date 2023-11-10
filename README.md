@@ -30,6 +30,54 @@ en zou je project het moeten doen.
 -  php artisan migrate
 -  php artisan db:seed
 
+  ## Swagger in laravel
+  - composer require darkaonline/l5-swagger tymon/jwt-auth
+  -  Voor de jwt configuratie moet er een bestand genereert worden met de volgende commando: php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+  -  Er moet nu een nieuwe jwt secret key aangemaakt worden, dit doe je met de commando: php artisan jwt:secret
+  -  Er moet nu een configuratie file worden aangemaakt voor swagger, je gebruikt de commando: php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
+  -  in de env file voeg je het volgende toe: L5_SWAGGER_CONST_HOST=http://project.test/api/v1
+  -  boven de controller klas geven we het volgende mee: /**
+ * @OA\Info(
+ *    title="Event Land van ons",
+ *    version="1.0.0",
+ * )
+ * @OA\SecurityScheme(
+ *     type="http",
+ *     securityScheme="bearerAuth",
+ *     scheme="bearer",
+ *     bearerFormat="JWT"
+ * )
+
+ */
+ - In de andere controllers die gemaakt worden zet je boven de method het volgende neer om dit op te nemen in je swagger documentatie:
+   /**
+ * @OA\Get (
+ *      path="/api/event",
+ *      operationId="showProject",
+ *      tags={"Projects"},
+ *      summary="Show project",
+ *      description="Returns list of projects",
+ *      @OA\Response(
+ *          response=200,
+ *          description="Successful operation",
+ *       ),
+ *      @OA\Response(
+ *          response=401,
+ *          description="Unauthenticated",
+ *      ),
+ *      @OA\Response(
+ *          response=403,
+ *          description="Forbidden"
+ *      )
+ *     )
+ */
+Dit is wel afhankelijk wat voor request het is en kan het natuurlijk andere informatie bevatten
+- Voeg de endpoints die je gemaakt heb in api.php
+- Gebruik de commando php artisan l5-swagger:generate om alle belangrijke informatie voor je endpoints te updaten in swagger
+- run de server van laravel en typ in je url balk achter localhost: /api/documentation
+- Je kan nu de endpoints documenteren en testen via Swagger 
+   
+
 ## workflow Git
 1) $git commit\
    met een message met wat je exact hebt toegevoegd/verandert.
