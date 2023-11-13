@@ -9,6 +9,22 @@ use Illuminate\Support\Facades\Redirect;
 
 class EventController extends Controller
 {
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index($event_name)
+    {
+        $event = Event::where('event_name', '=', $event_name)->first();
+        return view('detail', compact('event_name'))->with('event', $event);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -16,6 +32,12 @@ class EventController extends Controller
         return view('form')->with('date_error');
     }
 
+    public function show() {
+        $events = Event::where('begin_time', '>', DATE(NOW()))->get();
+
+//        dd($events);
+        return view('welcome')->with('events', $events);
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -46,7 +68,6 @@ class EventController extends Controller
         $event->description = $request->description;
         $event->save();
 
-
-        return Redirect::route('home');
+        return Redirect::route('welcome');
     }
 }

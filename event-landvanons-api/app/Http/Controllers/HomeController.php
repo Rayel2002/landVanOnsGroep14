@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Event;
 
 class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -13,7 +24,6 @@ class HomeController extends Controller
         $events = Event::where('begin_time', '>', DATE(NOW()))->get();
 
 //        dd($events);
-
-        return view('welcome')->with('events', $events);
+        return view('home')->with('events', $events);
     }
 }
