@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//Route::post('/register', 'App\Http\Controllers\UserController@register');
-//Route::post('/login', 'App\Http\Controllers\LoginController@login');
-//Route::get('/user', 'App\Http\Controllers\UserController@getUserDetails')->middleware('auth:sanctum');
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+
+
+Route::get('/home', [HomeController::class, 'show'])->name('home');
+Route::get('', [HomeController::class, 'show'])->name('home');
+Route::get('event/create', [EventController::class, 'create'])->name('event.create');
+Route::post('event/store', [EventController::class, 'store'])->name('event.store');
+
