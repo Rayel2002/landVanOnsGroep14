@@ -91,3 +91,7 @@ Dit zorgt er op de lange termijn voor dat er minder merge conflicts komen.
 5) $git push\ 
 naar correcte branch. De naam van deze branch is vaak de feature van wat je probeert toe te voegen
 6) Als de hele feature is geïmplementeerd, kan je deze mergen met de main. Dit is handiger om op github zelf te doen!
+
+## Authoriatie packages
+1) npm install
+2) npm run dev
