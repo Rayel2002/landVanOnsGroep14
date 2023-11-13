@@ -239,6 +239,11 @@
       <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/spatie/laravel-permission" />
       <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/php-webdriver/webdriver" />
       <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/laravel/dusk" />
+      <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/doctrine/deprecations" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

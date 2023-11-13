@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label for="postal_code">postcode:</label>
-            <input id="postal_code" type="text" name="postal_code" class="form-control" required>
+            <input id="postal_code" type="text" name="postal_code" class="form-control" required pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}">
         </div>
         <div class="form-group">
             <label for="amount_of_volunteers_needed">Aantal Benodigde Vrijwilligers:</label>

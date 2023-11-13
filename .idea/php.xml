@@ -237,6 +237,11 @@
       <path value="$PROJECT_DIR$/event-landvanons-api/vendor/spatie/laravel-permission" />
       <path value="$PROJECT_DIR$/event-landvanons-api/vendor/php-webdriver/webdriver" />
       <path value="$PROJECT_DIR$/event-landvanons-api/vendor/laravel/dusk" />
+      <path value="$PROJECT_DIR$/event-landvanons-api/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/event-landvanons-api/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/event-landvanons-api/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/event-landvanons-api/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/event-landvanons-api/vendor/doctrine/deprecations" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">

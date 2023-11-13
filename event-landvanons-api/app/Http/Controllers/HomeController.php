@@ -14,6 +14,7 @@ class HomeController extends Controller
         $events = Event::where('begin_time', '>', DATE(NOW()))->get();
 
 //        dd($events);
+
         return view('welcome')->with('events', $events);
     }
 }

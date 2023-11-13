@@ -788,6 +788,7 @@
     <label for="begin_time_sort">Van:</label>
     <input id="begin_time_sort" type="datetime-local">
     <label for="end_time_sort">tot:</label>
+    <input id="end_time_sort" type="datetime-local">
 </div>
 @if($events !== null)
     @foreach($events as $event)
