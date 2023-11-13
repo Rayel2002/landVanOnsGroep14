@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use DateTime;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Redirect;
 
 class EventController extends Controller
@@ -14,7 +13,7 @@ class EventController extends Controller
      * Show the form for creating a new resource.
      */
     public function create() {
-        return view('form');
+        return view('form')->with('date_error');
     }
 
     /**

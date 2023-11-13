@@ -6,6 +6,9 @@
             <label for="event_name">Naam:</label>
             <input id="event_name" type="text" name="event_name" class="form-control" required>
         </div>
+        @if ($date_error !== null)
+        <p class="errors">{{$date_error}}</p>
+        @endif
         <div class="form-group">
             <label for="begin_time">Begin Tijd:</label>
             <input id="begin_time" type="datetime-local" name="begin_time" class="form-control" required>
