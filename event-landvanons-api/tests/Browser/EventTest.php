@@ -3,6 +3,7 @@
 namespace Tests\Browser;
 
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTruncation;
 use Laravel\Dusk\Browser;
@@ -20,8 +21,10 @@ class EventTest extends DuskTestCase
      */
     public function loadsCorrectPageTest(): void {
         $this->browse(function (Browser $browser) {
+            $this->seed();
             $browser->waitForReload(function (Browser $browser) {
-                $browser->visitRoute('event.create')
+                $browser->loginAs(User::find(1))
+                    ->visitRoute('event.create')
                     ->type('event_name', 'name1')
                     ->type('begin_time', '13')
                     ->type('begin_time', '09')
@@ -45,7 +48,7 @@ class EventTest extends DuskTestCase
                     ->type('amount_of_volunteers_needed', '16')
                     ->type('description', 'description')
                     ->press('submit');
-            })->assertRouteIs('home');
+            })->assertRouteIs('event.show');
         });
     }
 
@@ -56,8 +59,10 @@ class EventTest extends DuskTestCase
      */
     public function addsEventToDBTest(): void {
         $this->browse(function (Browser $browser) {
+            $this->seed();
             $browser->waitForReload(function (Browser $browser) {
-                $browser->visitRoute('event.create')
+                $browser->loginAs(User::find(1))
+                    ->visitRoute('event.create')
                     ->type('event_name', 'name')
                     ->type('begin_time', '13')
                     ->type('begin_time', '09')
@@ -109,7 +114,7 @@ class EventTest extends DuskTestCase
         ]);
         $this->assertDatabaseCount('events', 1);
         $this->browse(function (Browser $browser) {
-            $browser->visitRoute('home')
+            $browser->visitRoute('event.show')
                 ->assertSee("2025-10-20 21:00:00");
 
         });

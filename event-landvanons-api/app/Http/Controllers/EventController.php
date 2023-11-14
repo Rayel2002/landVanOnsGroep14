@@ -9,15 +9,6 @@ use Illuminate\Support\Facades\Redirect;
 
 class EventController extends Controller
 {
-        /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function index($event_name)
     {
@@ -36,13 +27,14 @@ class EventController extends Controller
         $events = Event::where('begin_time', '>', DATE(NOW()))->get();
 
 //        dd($events);
-        return view('welcome')->with('events', $events);
+        return view('home')->with('events', $events);
     }
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request) {
 //        dd($request->request);
+        $this->middleware('auth');
 
         if (strtotime($request->begin_time) > strtotime($request->end_time)) {
             return view('form')->with('date_error', 'Begin tijd kan niet later zijn dat eind tijd');
@@ -68,6 +60,6 @@ class EventController extends Controller
         $event->description = $request->description;
         $event->save();
 
-        return Redirect::route('welcome');
+        return Redirect::route('event.show');
     }
 }

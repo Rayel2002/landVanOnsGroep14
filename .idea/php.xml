@@ -242,6 +242,7 @@
       <path value="$PROJECT_DIR$/event-landvanons-api/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/event-landvanons-api/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/event-landvanons-api/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/event-landvanons-api/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">
