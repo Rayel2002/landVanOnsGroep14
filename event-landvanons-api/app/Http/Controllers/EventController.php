@@ -3,21 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-
 class EventController extends Controller
 {
-        /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function index($event_name)
     {
@@ -29,20 +20,35 @@ class EventController extends Controller
      * Show the form for creating a new resource.
      */
     public function create() {
-        return view('form');
+        return view('form')->with('date_error');
     }
 
     public function show() {
         $events = Event::where('begin_time', '>', DATE(NOW()))->get();
 
 //        dd($events);
-        return view('welcome')->with('events', $events);
+        return view('home')->with('events', $events);
     }
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request) {
-//        dd($request);
+//        dd($request->request);
+        $this->middleware('auth');
+
+        if (strtotime($request->begin_time) > strtotime($request->end_time)) {
+            return view('form')->with('date_error', 'Begin tijd kan niet later zijn dat eind tijd');
+        }
+
+        if (strtotime($request->begin_time) === strtotime($request->end_time)) {
+            return view('form')->with('date_error', 'Begin tijd kan niet hetzelfde zijn als eind tijd');
+        }
+
+        if (new DateTime($request->begin_time) < new DateTime()) {
+            return view('form')->with('date_error', 'Begin tijd kan niet al geweest zijn');
+        }
+
+
         $event = new Event;
         $event->event_name = $request->event_name;
         $event->begin_time = $request->begin_time;
@@ -53,6 +59,7 @@ class EventController extends Controller
         $event->amount_of_volunteers_needed = $request->amount_of_volunteers_needed;
         $event->description = $request->description;
         $event->save();
-        return Redirect::route('welcome');
+
+        return Redirect::route('event.show');
     }
 }
