@@ -18,7 +18,8 @@
                     </div>
                     <div>
                         <label for="search">Zoek:</label>
-                        <input id="search" name="search" type="text">
+                        <input list="filteredEventOptions" id="search" name="search" type="text">
+                        <datalist id="filteredEventOptions"></datalist>
                         <label for="begin_time_sort">Van:</label>
                         <input id="begin_time_sort" type="datetime-local">
                         <label for="end_time_sort">tot:</label>

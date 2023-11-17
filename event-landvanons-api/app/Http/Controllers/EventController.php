@@ -19,20 +19,31 @@ class EventController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create() {
+    public function create()
+    {
         return view('form')->with('date_error');
     }
 
-    public function show() {
+    public function show()
+    {
         $events = Event::where('begin_time', '>', DATE(NOW()))->get();
 
 //        dd($events);
         return view('home')->with('events', $events);
     }
+
+    public function filter_event(Request $request)
+    {
+        $events = Event::where('event_name', 'like', "%" . $request->nonFilteredEvent . "%")
+            ->get();
+        return response()->json(['filterEventNames' => $events]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 //        dd($request->request);
         $this->middleware('auth');
 
