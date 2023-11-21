@@ -90,4 +90,52 @@ class EventApiController extends Controller
             exit;
         }
     }
+
+    /**
+     * @OA\Put  (
+     *      path="/api/events/{id}",
+     *      operationId="createEvent",
+     *      tags={"Events"},
+     *      summary="Update Events",
+     * @OA\Parameter(
+     *        name="id",
+     *        description="Product Category ID",
+     *        example=1,
+     *        required=true,
+     *        in="path",
+     *        @OA\Schema(
+     *            type="integer"
+     *        )
+     *     ),
+     *     @OA\RequestBody (
+     *     required=true,
+     *     @OA\MediaType(
+     *     mediaType="application/json",
+     *     @OA\Schema(
+     *     type="object",
+     *     @OA\Property(property="event_name", type="string", example="Updated event"),
+     *     @OA\Property(property="begin_time", type="string", format="date-time")
+     *     )
+     *     )
+     *     ),
+     *      description="Return a event by given id",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+    public function update_event($id, Request $request)
+    {
+
+    }
 }
