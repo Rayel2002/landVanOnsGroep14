@@ -5,14 +5,14 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/event": {
+        "/api/events": {
             "get": {
                 "tags": [
-                    "Projects"
+                    "Events"
                 ],
-                "summary": "Show project",
-                "description": "Returns list of projects",
-                "operationId": "showProject",
+                "summary": "Show Events",
+                "description": "Returns list of events",
+                "operationId": "showEvents",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -24,14 +24,28 @@
                         "description": "Forbidden"
                     }
                 }
-            },
-            "post": {
+            }
+        },
+        "/api/event/{id}": {
+            "get": {
                 "tags": [
                     "Events"
                 ],
-                "summary": "Get list of projects",
-                "description": "Returns list of projects",
-                "operationId": "getProjectsList",
+                "summary": "Show Events",
+                "description": "Return a event by given id",
+                "operationId": "getEvent",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product Category ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation"
