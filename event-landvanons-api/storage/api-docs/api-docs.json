@@ -29,8 +29,7 @@
                 "tags": [
                     "Events"
                 ],
-                "summary": "Update Events",
-                "description": "Return a event by given id",
+                "summary": "Create a Events",
                 "operationId": "createEvent",
                 "requestBody": {
                     "required": true,
@@ -52,7 +51,23 @@
                                     },
                                     "street_name": {
                                         "type": "string",
-                                        "example": "Updated event"
+                                        "example": "street name"
+                                    },
+                                    "house_number": {
+                                        "type": "string",
+                                        "example": "Updated house_number"
+                                    },
+                                    "postal_code": {
+                                        "type": "string",
+                                        "example": "Updated postal code"
+                                    },
+                                    "amount_of_volunteers_needed": {
+                                        "type": "number",
+                                        "example": 5
+                                    },
+                                    "descriptipn": {
+                                        "type": "string",
+                                        "example": "Updated description"
                                     }
                                 },
                                 "type": "object"
@@ -63,6 +78,9 @@
                 "responses": {
                     "200": {
                         "description": "Successful operation"
+                    },
+                    "201": {
+                        "description": "Successful created"
                     },
                     "401": {
                         "description": "Unauthenticated"

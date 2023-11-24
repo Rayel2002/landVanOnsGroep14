@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 use Mockery\Exception;
 use App\Http\Resources\EventResource;
 use App\Http\Resources\EventCollection;
-use App\Services\EventQuery;
+use App\Services\EventsFilter;
+
+// A tutorial how to build a REST API in laravel
+//https://www.youtube.com/watch?v=YGqCZjdgJJk
 
 class EventApiController extends Controller
 {
@@ -37,14 +40,14 @@ class EventApiController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = new EventQuery();
-        $queryItems = $filter->transform($request);
-
-        if(count($queryItems) == 0) {
+//        $filter = new EventsFilter();
+//        $queryItems = $filter->transform($request);
+//
+//        if(count($queryItems) == 0) {
             return new EventCollection(Event::paginate());
-        } else {
-            return new EventCollection(Event::where($queryItems)->paginate());
-        }
+//        } else {
+//            return new EventCollection(Event::where($queryItems)->paginate());
+//        }
     }
 
     /**
@@ -106,25 +109,29 @@ class EventApiController extends Controller
      *      path="/api/v1/events",
      *      operationId="createEvent",
      *      tags={"Events"},
-     *      summary="Update Events",
+     *      summary="Create a Events",
      *     @OA\RequestBody (
      *     required=true,
-     *     @OA\MediaType(
-     *     mediaType="application/json",
-     *     @OA\Schema(
+     *     @OA\JsonContent(
      *     type="object",
      *     @OA\Property(property="event_name", type="string", example="Updated event"),
      *     @OA\Property(property="begin_time", type="string", format="date-time"),
      *     @OA\Property(property="end_time", type="string", format="date-time"),
-     *     @OA\Property(property="street_name", type="string", example="Updated event"),
-     *     )
+     *     @OA\Property(property="street_name", type="string", example="street name"),
+     *     @OA\Property(property="house_number", type="string", example="Updated house_number"),
+     *     @OA\Property(property="postal_code", type="string", example="Updated postal code"),
+     *     @OA\Property(property="amount_of_volunteers_needed", type="number", example=5),
+     *     @OA\Property(property="descriptipn", type="string", example="Updated description"),
      *     )
      *     ),
-     *      description="Return a event by given id",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
      *       ),
+     *           @OA\Response(
+     *           response=201,
+     *           description="Successful created",
+     *        ),
      *      @OA\Response(
      *          response=401,
      *          description="Unauthenticated",
@@ -136,10 +143,23 @@ class EventApiController extends Controller
      *     )
      */
 
-    public function create(Request $request)
-    {
+    public function store(Request $request){
 
-        return response()->json(['message' => 'Event updated successfully']);
+        $validatedData = $request->validate([
+            'event_name' => 'required|string',
+            'begin_time' =>'required|date',
+            'end_time' => 'required|date',
+            'street_name' => 'required|string',
+            'house_number' => 'required|string',
+            'postal_code' => 'required|string',
+            'amount_of_volunteers_needed' => 'required|integer',
+            'description' => 'required|string'
+        ]);
+
+        Event::create($validatedData);
+
+        // Return a response
+        return response()->json(['message' => 'Post created successfully'], 201);
     }
 
     /**
