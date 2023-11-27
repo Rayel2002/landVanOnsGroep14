@@ -14,3 +14,4 @@
         <p>{{ $event->description }}</p>
     </div>
 @endif
+@endsection
