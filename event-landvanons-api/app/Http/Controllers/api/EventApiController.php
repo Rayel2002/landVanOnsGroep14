@@ -44,7 +44,7 @@ class EventApiController extends Controller
 //        $queryItems = $filter->transform($request);
 //
 //        if(count($queryItems) == 0) {
-            return new EventCollection(Event::paginate());
+        return new EventCollection(Event::paginate());
 //        } else {
 //            return new EventCollection(Event::where($queryItems)->paginate());
 //        }
@@ -105,7 +105,7 @@ class EventApiController extends Controller
 
 
     /**
-     * @OA\Post  (
+     * //     * @OA\Post(
      *      path="/api/v1/events",
      *      operationId="createEvent",
      *      tags={"Events"},
@@ -114,14 +114,14 @@ class EventApiController extends Controller
      *     required=true,
      *     @OA\JsonContent(
      *     type="object",
-     *     @OA\Property(property="event_name", type="string", example="Updated event"),
-     *     @OA\Property(property="begin_time", type="string", format="date-time"),
-     *     @OA\Property(property="end_time", type="string", format="date-time"),
-     *     @OA\Property(property="street_name", type="string", example="street name"),
-     *     @OA\Property(property="house_number", type="string", example="Updated house_number"),
-     *     @OA\Property(property="postal_code", type="string", example="Updated postal code"),
-     *     @OA\Property(property="amount_of_volunteers_needed", type="number", example=5),
-     *     @OA\Property(property="descriptipn", type="string", example="Updated description"),
+     *     @OA\Property(property="eventName", type="string", example="Updated event"),
+     *     @OA\Property(property="beginTime", type="string", format="date"),
+     *     @OA\Property(property="endTime", type="string", format="date"),
+     *     @OA\Property(property="streetName", type="string", example="street name"),
+     *     @OA\Property(property="houseNumber", type="string", example="Updated house_number"),
+     *     @OA\Property(property="postalCode", type="string", example="Updated postal code"),
+     *     @OA\Property(property="amountOfVolunteersNeeded", type="number", example=5),
+     *     @OA\Property(property="eventDescription", type="string", example="Updated description"),
      *     )
      *     ),
      *      @OA\Response(
@@ -135,31 +135,36 @@ class EventApiController extends Controller
      *      @OA\Response(
      *          response=401,
      *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
-     *     )
+     *     ),
+     * )
      */
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $validatedData = $request->validate([
-            'event_name' => 'required|string',
-            'begin_time' =>'required|date',
-            'end_time' => 'required|date',
-            'street_name' => 'required|string',
-            'house_number' => 'required|string',
-            'postal_code' => 'required|string',
-            'amount_of_volunteers_needed' => 'required|integer',
-            'description' => 'required|string'
+            'eventName' => 'required|string',
+            'beginTime' => 'required|date',
+            'endTime' => 'required|date',
+            'streetName' => 'required|string',
+            'houseNumber' => 'required|string',
+            'postalCode' => 'required|string',
+            'amountOfVolunteersNeeded' => 'required|integer',
+            'eventDescription' => 'required|string'
         ]);
 
-        Event::create($validatedData);
+        $event = Event::create([
+            'event_name' => $validatedData['eventName'],
+            'begin_time' => $validatedData['beginTime'],
+            'end_time' => $validatedData['endTime'],
+            'street_name' => $validatedData['streetName'],
+            'house_number' => $validatedData['houseNumber'],
+            'postal_code' => $validatedData['postalCode'],
+            'amount_of_volunteers_needed' => $validatedData['amountOfVolunteersNeeded'],
+            'description' => $validatedData['eventDescription'],
+        ]);
 
-        // Return a response
-        return response()->json(['message' => 'Post created successfully'], 201);
+        return response()->json(['message' => 'Event successfully created'], 201);
     }
 
     /**
