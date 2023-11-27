@@ -101,7 +101,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Product Category ID",
+                        "description": "Event Category ID",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -132,7 +132,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Product Category ID",
+                        "description": "Event Category ID",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -201,7 +201,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Product Category ID",
+                        "description": "Event Category ID",
                         "required": true,
                         "schema": {
                             "type": "integer"

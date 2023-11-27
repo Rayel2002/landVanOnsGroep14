@@ -40,14 +40,7 @@ class EventApiController extends Controller
      */
     public function index(Request $request)
     {
-//        $filter = new EventsFilter();
-//        $queryItems = $filter->transform($request);
-//
-//        if(count($queryItems) == 0) {
         return new EventCollection(Event::paginate());
-//        } else {
-//            return new EventCollection(Event::where($queryItems)->paginate());
-//        }
     }
 
     /**
@@ -58,7 +51,7 @@ class EventApiController extends Controller
      *      summary="Show Event",
      *        @OA\Parameter(
      *       name="id",
-     *       description="Product Category ID",
+     *       description="Event Category ID",
      *       example=1,
      *       required=true,
      *       in="path",
@@ -248,7 +241,7 @@ class EventApiController extends Controller
      *      summary="Deleting Event",
      * @OA\Parameter(
      *        name="id",
-     *        description="Product Category ID",
+     *        description="Event Category ID",
      *        example=1,
      *        required=true,
      *        in="path",
@@ -271,8 +264,10 @@ class EventApiController extends Controller
      *      )
      *     )
      */
-    public function destroy($id, Request $request)
+    public function destroy($id)
     {
-
+        $event = Event::find($id);
+        $event->delete();
+        return response()->json(['message' => 'Event deleted successfully']);
     }
 }
