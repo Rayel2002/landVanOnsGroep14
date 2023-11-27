@@ -146,21 +146,31 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "event_name": {
-                                        "type": "string",
-                                        "example": "Updated event"
+                                    "eventName": {
+                                        "type": "string"
                                     },
-                                    "begin_time": {
+                                    "beginTime": {
                                         "type": "string",
-                                        "format": "date-time"
+                                        "format": "date"
                                     },
-                                    "end_time": {
+                                    "endTime": {
                                         "type": "string",
-                                        "format": "date-time"
+                                        "format": "date"
                                     },
-                                    "street_name": {
-                                        "type": "string",
-                                        "example": "Updated event"
+                                    "streetName": {
+                                        "type": "string"
+                                    },
+                                    "houseNumber": {
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "type": "string"
+                                    },
+                                    "amountOfVolunteersNeeded": {
+                                        "type": "number"
+                                    },
+                                    "eventDescription": {
+                                        "type": "string"
                                     }
                                 },
                                 "type": "object"

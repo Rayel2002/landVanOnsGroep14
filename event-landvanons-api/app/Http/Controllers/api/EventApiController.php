@@ -175,7 +175,7 @@ class EventApiController extends Controller
      *      summary="Update Events",
      * @OA\Parameter(
      *        name="id",
-     *        description="Product Category ID",
+     *        description="Event Category ID",
      *        example=1,
      *        required=true,
      *        in="path",
@@ -185,16 +185,17 @@ class EventApiController extends Controller
      *     ),
      *     @OA\RequestBody (
      *     required=true,
-     *     @OA\MediaType(
-     *     mediaType="application/json",
-     *     @OA\Schema(
-     *     type="object",
-     *     @OA\Property(property="event_name", type="string", example="Updated event"),
-     *     @OA\Property(property="begin_time", type="string", format="date-time"),
-     *     @OA\Property(property="end_time", type="string", format="date-time"),
-     *     @OA\Property(property="street_name", type="string", example="Updated event"),
-     *     )
-     *     )
+     *     @OA\JsonContent(
+     *      type="object",
+     *      @OA\Property(property="eventName", type="string"),
+     *      @OA\Property(property="beginTime", type="string", format="date"),
+     *      @OA\Property(property="endTime", type="string", format="date"),
+     *      @OA\Property(property="streetName", type="string"),
+     *      @OA\Property(property="houseNumber", type="string"),
+     *      @OA\Property(property="postalCode", type="string"),
+     *      @OA\Property(property="amountOfVolunteersNeeded", type="number"),
+     *      @OA\Property(property="eventDescription", type="string"),
+     *      )
      *     ),
      *      description="Return a event by given id",
      *      @OA\Response(
@@ -214,17 +215,28 @@ class EventApiController extends Controller
 
     public function update($id, Request $request)
     {
-        $event = Event::find($id);
-        $event->$request->input('event_name');
-        $event->$request->input('begin_time');
-        $event->$request->input('end_time');
-        $event->$request->input('street_name');
-        $event->$request->input('house_number');
-        $event->$request->input('postal_code');
-        $event->$request->input('amount_of_volunteers_needed');
-        $event->$request->input('description');
+        $validatedData = $request->validate([
+            'eventName' => 'required|string',
+            'beginTime' => 'required|date',
+            'endTime' => 'required|date',
+            'streetName' => 'required|string',
+            'houseNumber' => 'required|string',
+            'postalCode' => 'required|string',
+            'amountOfVolunteersNeeded' => 'required|integer',
+            'eventDescription' => 'required|string'
+        ]);
 
-        $event->update();
+        $event = Event::find($id);
+        $event->update([
+            'event_name' => $validatedData['eventName'],
+            'begin_time' => $validatedData['beginTime'],
+            'end_time' => $validatedData['endTime'],
+            'street_name' => $validatedData['streetName'],
+            'house_number' => $validatedData['houseNumber'],
+            'postal_code' => $validatedData['postalCode'],
+            'amount_of_volunteers_needed' => $validatedData['amountOfVolunteersNeeded'],
+            'description' => $validatedData['eventDescription'],
+        ]);
         return response()->json(['message' => 'Event updated successfully']);
     }
 
