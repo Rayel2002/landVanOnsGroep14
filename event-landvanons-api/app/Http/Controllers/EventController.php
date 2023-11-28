@@ -13,6 +13,12 @@ class EventController extends Controller
     {;
         return view('adminHome');
     }
+
+    public function filter_event(Request $request) {
+        $events = Event::where('event_name', 'like', "%" . $request->nonFilteredEvent . "%")
+            ->get();
+        return response()->json(['filterEventNames' => $events]);
+    }
     public function destroy($event_name)
     {
         $event = Event::where('event_name', $event_name)->firstOrFail();
@@ -21,8 +27,6 @@ class EventController extends Controller
         // Redirect or respond as needed
         return view('adminHome')->with('status', 'Event deleted successfully');
     }
-
-
 
     public function adminform()
     {
