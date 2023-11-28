@@ -18,6 +18,7 @@ use App\Http\Controllers\UserController;
 
 Route::middleware('auth:sanctum')->get('/users', function (Request $request) {
     return $request->user();
+
 });
 
 Route::prefix('v1')->namespace('App\Http\Controllers\api')->group(function() {
