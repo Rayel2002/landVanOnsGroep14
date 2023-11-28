@@ -1,0 +1,235 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Event Land van ons",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/events": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Show All Events",
+                "description": "Returns list of events",
+                "operationId": "showEvents",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Create a Events",
+                "description": "//     * @OA\\Post(\npath=\"/api/v1/events\",\noperationId=\"createEvent\",\ntags={\"Events\"},\nsummary=\"Create a Events\",",
+                "operationId": "createEvent",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "eventName": {
+                                        "type": "string",
+                                        "example": "Updated event"
+                                    },
+                                    "beginTime": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "endTime": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "streetName": {
+                                        "type": "string",
+                                        "example": "street name"
+                                    },
+                                    "houseNumber": {
+                                        "type": "string",
+                                        "example": "Updated house_number"
+                                    },
+                                    "postalCode": {
+                                        "type": "string",
+                                        "example": "Updated postal code"
+                                    },
+                                    "amountOfVolunteersNeeded": {
+                                        "type": "number",
+                                        "example": 5
+                                    },
+                                    "eventDescription": {
+                                        "type": "string",
+                                        "example": "Updated description"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "201": {
+                        "description": "Successful created"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/v1/events/{id}": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Show Event",
+                "description": "Return a event by given id",
+                "operationId": "showEvent",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Event Category ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Update Events",
+                "description": "Return a event by given id",
+                "operationId": "updateEvent",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Event Category ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "eventName": {
+                                        "type": "string"
+                                    },
+                                    "beginTime": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "endTime": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "streetName": {
+                                        "type": "string"
+                                    },
+                                    "houseNumber": {
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "type": "string"
+                                    },
+                                    "amountOfVolunteersNeeded": {
+                                        "type": "number"
+                                    },
+                                    "eventDescription": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Deleting Event",
+                "description": "Return a event by given id",
+                "operationId": "deleteEvent",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Event Category ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

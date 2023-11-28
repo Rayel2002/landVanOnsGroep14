@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/home', [EventController::class, 'show'])->name('event.show');
 Route::get('', [EventController::class, 'show'])->name('event.show');
 Route::get('admin', [AdminController::class, 'show'])->name('admin')->middleware('auth');
@@ -24,3 +25,4 @@ Route::get('event/show', [EventController::class, 'show'])->name('event.show');
 Route::post('admin/event/store', [EventController::class, 'store'])->name('event.store');
 Route::get('event/index/{event_name}', [EventController::class, 'index'])->name('event.index');
 Auth::routes();
+
