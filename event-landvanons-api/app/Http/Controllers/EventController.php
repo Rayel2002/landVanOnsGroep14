@@ -24,7 +24,7 @@ class EventController extends Controller
 
 
 
-    public function form()
+    public function adminform()
     {
         $events = Event::where('begin_time', '>', DATE(NOW()))->get();
 

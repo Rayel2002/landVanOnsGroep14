@@ -17,7 +17,7 @@
                     </div>
                         <a href="{{ route('event.create') }}">create new event</a>
                         <a href="{{ route('event.show') }}">View all events</a>
-                        <a href="{{ route('event.adminform', 1) }}">Admin functions</a>
+                        <a href="{{ route('event.adminform') }}">Admin functions</a>
                 </div>
             </div>
         </div>

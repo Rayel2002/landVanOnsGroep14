@@ -36,6 +36,7 @@
                             </div>
                         @endforeach
                     @endif
+                    <a href="{{ route('event.adminform') }}">Admin functions</a>
                 </div>
             </div>
         </div>
