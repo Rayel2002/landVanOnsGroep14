@@ -46,6 +46,8 @@
                             </div>
                         @endforeach
                     @endif
+                    <a href="{{ route('event.show') }}">User functions</a>
+                    <a href="{{ route('event.adminHome') }}">Admin menu</a>
                 </div>
             </div>
         </div>

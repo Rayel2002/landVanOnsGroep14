@@ -13,5 +13,6 @@
         <p>{{ $event->postal_code }}</p>
         <p>{{ $event->description }}</p>
     </div>
+    <a href="{{ route('event.adminform') }}">terug naar de admin functions</a>
 @endif
 @endsection
