@@ -21,6 +21,9 @@
                             <label for="event_name">Naam:</label>
                             <input id="event_name" type="text" name="event_name" class="form-control" required>
                         </div>
+                        @if ($date_error !== null)
+                            <p class="errors">{{$date_error}}</p>
+                        @endif
                         <div class="form-group">
                             <label for="begin_time">Begin Tijd:</label>
                             <input id="begin_time" type="datetime-local" name="begin_time" class="form-control"
@@ -40,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <label for="postal_code">postcode:</label>
-                            <input id="postal_code" type="text" name="postal_code" class="form-control" required>
+                            <input id="postal_code" type="text" name="postal_code" class="form-control" required pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}">
                         </div>
                         <div class="form-group">
                             <label for="amount_of_volunteers_needed">Aantal Benodigde Vrijwilligers:</label>

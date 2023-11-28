@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <body class="antialiased">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -15,10 +16,26 @@
                         @endif
 
                     </div>
-                        <a href="{{ route('event.create') }}">create new event</a>
-                    <a href="{{ route('event.show') }}">View all events</a>
+                    <div>
+                        <label for="search">Zoek:</label>
+                        <input id="search" name="search" type="text">
+                        <label for="begin_time_sort">Van:</label>
+                        <input id="begin_time_sort" type="datetime-local">
+                        <label for="end_time_sort">tot:</label>
+                        <input id="end_time_sort" type="datetime-local">
+                    </div>
+                    @if ($events !== null)
+                        @foreach ($events as $event)
+                            <div class="events">
+                                <a href={{ route('event.index',$event-> event_name) }}><h3>{{ $event->event_name }}</h3>
+                                </a>
+                                <p>{{ $event->begin_time }} - {{ $event->end_time }}</p>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
     </div>
+    </body>
 @endsection

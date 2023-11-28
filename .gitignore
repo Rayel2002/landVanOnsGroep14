@@ -8,6 +8,7 @@
 .env
 .env.backup
 .env.production
+.env.dusk.local
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
@@ -21,3 +22,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/package-lock.json
+.gitignore
+/tests/Browser/screenshots/.gitignore
