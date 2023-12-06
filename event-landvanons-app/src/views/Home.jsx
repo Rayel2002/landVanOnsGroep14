@@ -5,7 +5,7 @@ function Home() {
     return (
         <div className="grid grid-cols-3 col-span-2">
             <div className="flex justify-around">
-                <div className="card">
+                <div className="">
 
                     <img className="w-24" src={Logo}/>
                         <div>
