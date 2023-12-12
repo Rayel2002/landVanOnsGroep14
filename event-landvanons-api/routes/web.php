@@ -23,4 +23,10 @@ Route::get('admin/event/create', [EventController::class, 'create'])->name('even
 Route::get('event/show', [EventController::class, 'show'])->name('event.show');
 Route::post('admin/event/store', [EventController::class, 'store'])->name('event.store');
 Route::get('event/index/{event_name}', [EventController::class, 'index'])->name('event.index');
+Route::get('event/edit/{event_name}',[EventController::class, 'edit'])->name('event.edit')->middleware('auth');
+Route::post('event/update/{event_name}', [EventController::class, 'update'])->name('event.update')->middleware('auth');
+Route::get('admin/event/adminHome',[EventController::class, 'home'])->name('event.adminHome')->middleware('auth');
+Route::get('admin/event/adminform',[EventController::class, 'adminform'])->name('event.adminform')->middleware('auth');
+Route::delete('admin/event/delete/{event_name}', [EventController::class, 'destroy'])->name('event.destroy')->middleware('auth');
+
 Auth::routes();

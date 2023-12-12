@@ -2,7 +2,9 @@
 
 @section('content')
 
-
+    @if($success !== null)
+        <div>{{$success}}</div>
+    @endif
 @if ($event !== null)
     <div class="events">
         <h3>{{ $event->event_name }}</h3>
@@ -11,4 +13,6 @@
         <p>{{ $event->postal_code }}</p>
         <p>{{ $event->description }}</p>
     </div>
+    <a href="{{ route('event.adminform') }}">terug naar de admin functions</a>
 @endif
+@endsection
