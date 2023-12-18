@@ -3,16 +3,51 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
+use App\Models\Registration;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
     public function home()
-    {;
+    {
+        ;
         return view('adminHome');
     }
+
+    public function getEventData($event_name)
+    {
+        $event = Event::where('event_name', '=', $event_name)->first();
+        $user = Auth::User();
+        return view('eventRegister', compact('event_name', 'user'))->with('event', $event);
+    }
+
+    public function registerForEvent($event_name, Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+
+        $event = Event::where('event_name', '=', $event_name)->first();
+        $user = User::where('name', '=', $request->name)->first();
+
+//        if registration has event id && user id return to view with status ('user has already signed up')
+        if (Registration::where('user_id', '=', $user->id)->where('event_id', '=', $event->id)->count() !== 0) {
+            return back()->withInput()->with('status', 'Je bent al aangemeld voor dit evenement.');
+        } else {
+            $registration = new Registration;
+            $registration->event_id = $event->id;
+            $registration->user_id = $user->id;
+            $registration->save();
+
+            return back()->withInput()->with('status', 'Je bent aangemeld voor dit evenement! Check je email voor een confirmatie.');
+        }
+    }
+
     public function destroy($event_name)
     {
         $event = Event::where('event_name', $event_name)->firstOrFail();
@@ -21,7 +56,6 @@ class EventController extends Controller
         // Redirect or respond as needed
         return view('adminHome')->with('status', 'Event deleted successfully');
     }
-
 
 
     public function adminform()
@@ -35,14 +69,15 @@ class EventController extends Controller
     public function index($event_name)
     {
         $event = Event::where('event_name', '=', $event_name)->first();
-        return view('detail', compact('event_name'))->with('event', $event) ->with('success');
+        return view('detail', compact('event_name'))->with('event', $event)->with('success');
 
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create() {
+    public function create()
+    {
         return view('form')->with('date_error');
     }
 
@@ -93,16 +128,19 @@ class EventController extends Controller
         return view('detail', compact('requested_name'))->with('success', 'Event updated successfully')->with('event', $event);
     }
 
-    public function show() {
+    public function show()
+    {
         $events = Event::where('begin_time', '>', DATE(NOW()))->get();
 
 //        dd($events);
         return view('home')->with('events', $events);
     }
+
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 //        dd($request->request);
         $this->middleware('auth');
 
