@@ -21,6 +21,7 @@ Route::get('', [EventController::class, 'show'])->name('event.show');
 Route::get('admin', [AdminController::class, 'show'])->name('admin')->middleware('auth');
 Route::get('admin/event/create', [EventController::class, 'create'])->name('event.create')->middleware('auth');
 Route::get('event/show', [EventController::class, 'show'])->name('event.show');
+Route::post('event/filter', [EventController::class, 'filter_event'])->name('event.filter');
 Route::post('admin/event/store', [EventController::class, 'store'])->name('event.store');
 Route::get('event/index/{event_name}', [EventController::class, 'index'])->name('event.index');
 Route::get('event/edit/{event_name}',[EventController::class, 'edit'])->name('event.edit')->middleware('auth');
