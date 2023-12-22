@@ -327,6 +327,10 @@
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
       <path value="$PROJECT_DIR$/vendor/php-webdriver/webdriver" />
       <path value="$PROJECT_DIR$/vendor/_laravel_idea" />
+      <path value="$PROJECT_DIR$/event-landvanons-api/vendor/geoip2/geoip2" />
+      <path value="$PROJECT_DIR$/event-landvanons-api/vendor/stevebauman/location" />
+      <path value="$PROJECT_DIR$/event-landvanons-api/vendor/maxmind/web-service-common" />
+      <path value="$PROJECT_DIR$/event-landvanons-api/vendor/maxmind-db/reader" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">

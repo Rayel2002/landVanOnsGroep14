@@ -20,6 +20,10 @@
       <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/laravel/sanctum" />
       <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/laravel/pint" />
       <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/filp/whoops" />
+      <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/geoip2/geoip2" />
+      <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/stevebauman/location" />
+      <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/maxmind/web-service-common" />
+      <excludeFolder url="file://$MODULE_DIR$/event-landvanons-api/vendor/maxmind-db/reader" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
