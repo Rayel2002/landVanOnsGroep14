@@ -15,28 +15,19 @@ class RoleAndPermissionSeeder extends Seeder
     public function run(): void
     {
         //Permission for admin
-        Permission::create(['name' => 'create-event']);
-        Permission::create(['name' => 'edit-event']);
-        Permission::create(['name' => 'delete-event']);
+        Permission::firstOrCreate(['name' => 'create-event']);
+        Permission::firstOrCreate(['name' => 'edit-event']);
+        Permission::firstOrCreate(['name' => 'delete-event']);
 
         //Permission for visitor
-        Permission::create(['name' => 'create-account']);
-        Permission::create(['name' => 'view-registered-events']);
-        Permission::create(['name' => 'share-events']);
-        Permission::create(['name' => 'post-review']);
+        Permission::firstOrCreate(['name' => 'create-account']);
+        Permission::firstOrCreate(['name' => 'view-registered-events']);
+        Permission::firstOrCreate(['name' => 'share-events']);
+        Permission::firstOrCreate(['name' => 'post-review']);
 
-        //Permission for farmer
-        Permission::create(['name' => 'create-account']);
-        Permission::create(['name' => 'view-registered-events']);
-        Permission::create(['name' => 'share-events']);
-        Permission::create(['name' => 'post-review']);
-        Permission::create(['name' => 'create-event']);
-        Permission::create(['name' => 'edit-event']);
-        Permission::create(['name' => 'delete-event']);
-
-        $adminRole = Role::create(['name' => 'Admin']);
-        $visitorRole = Role::create(['name' => 'Visitor']);
-        $farmerRole = Role::create(['name' => 'Farmer']);
+        $adminRole = Role::firstOrCreate(['name' => 'Admin']);
+        $visitorRole = Role::firstOrCreate(['name' => 'Visitor']);
+        $farmerRole = Role::firstOrCreate(['name' => 'Farmer']);
 
         $adminRole->givePermissionTo([
             'create-event',
