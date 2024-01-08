@@ -15,8 +15,13 @@
                         @endif
 
                     </div>
-                    <a href="{{ route('event.create') }}">create new event</a>
-                    <a href="{{ route('event.show') }}">View all events</a>
+                    @can('edit-event')
+                        <a href="{{ route('event.create') }}">create new event</a>
+                    @endcan
+                    <a href="{{ route('event.show') }}">Aanmelden</a>
+                    @can('edit-event')
+                        <a href="{{ route('event.adminform') }}">Admin functions</a>
+                    @endcan
                 </div>
             </div>
         </div>
