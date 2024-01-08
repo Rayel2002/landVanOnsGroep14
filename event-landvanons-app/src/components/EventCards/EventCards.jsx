@@ -5,9 +5,19 @@ import dateIcon from "../../assets/date_icon.png";
 import timeIcon from "../../assets/time_icon.png";
 import personIcon from "../../assets/icons8-person-48.png";
 import bookmarkIcon from "../../assets/bookmark.png";
+import NextButton from '../../assets/next-button.png';
+import PreviousButton from '../../assets/previous-button.png'
 
 function EventCards({data}) {
     console.log("here:", data);
+    const [content, setContent] = useState(0);
+
+    const showNext = () => {
+       if(content < data.length - 1) {
+           setContent(content + 1)
+           console.log(content)
+       }
+    }
     return (
         <>
             <div className="flex justify-between ">
@@ -31,20 +41,28 @@ function EventCards({data}) {
                     </div>
                     <div className="flex pb-5 p-5 mt-3 justify-around">
                         <button><img src={bookmarkIcon}/></button>
-                        <button>Toevoegen aan Agenda</button>
                         <button className='bg-green-700'><h2>Inschrijven</h2></button>
                     </div>
                 </div>
-                <div className="detail-card shadow-2xl text-center mb-10 ">
-                    <h2 className={"text-2xl"}>Details</h2>
-                    <h3 className="text-xl">Omschrijving:</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vestibulum dapibus dui eu
-                        maximus. Maecenas sed massa vehicula, tristique sapien vel, egestas tellus. Cras vulputate et
-                        neque ut blandit. Fusce suscipit ex felis, quis dapibus nulla vehicula eget. Vivamus iaculis
-                        sapien massa, at gravida lacus tempor et. Phasellus luctus justo eget augue bibendum interdum.
-                        Sed accumsan commodo sem, sed posuere lectus bibendum a. Donec nec laoreet purus. Vestibulum
-                        condimentum malesuada orci, in efficitur orci accumsan sed. Donec a maximus neque, in interdum
-                        nisl. Donec quis turpis mauris.</p>
+                <div className="detail-card w-96 shadow-2xl text-center mb-10 ">
+                    <div className={"content"}>
+                    <h2 className={"text-2xl mt-5 pb-5"}>Details</h2>
+                    <h3 className="text-xl pb-3">Omschrijving:</h3>
+                    <div className={"description-section"}>
+                        <p className={"description"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vestibulum dapibus dui eu
+                            maximus. Maecenas sed massa vehicula, tristique sapien vel, egestas tellus. Cras vulputate et
+                            neque ut blandit. Fusce suscipit ex felis, quis dapibus nulla vehicula eget. Vivamus iaculis
+                            sapien massa, at gravida lacus tempor et. Phasellus luctus justo eget augue bibendum interdum.
+                            Sed accumsan commodo sem, sed posuere lectus bibendum a. Donec nec laoreet purus. Vestibulum
+                            condimentum malesuada orci, in efficitur orci accumsan sed. Donec a maximus neque, in interdum
+                            nisl. Donec quis turpis mauris.</p>
+                    </div>
+                    <div className={"button-section mt-3 flex justify-around"}>
+                        <button className={"previous-button"}><img src={PreviousButton}/> </button>
+                        <button onClick={showNext} className={"next-button"}><img  src={NextButton}/></button>
+                    </div>
+                    <button className={'close-button mt-5 ml-auto left-32'}></button>
+                    </div>
                 </div>
             </div>
         </>
