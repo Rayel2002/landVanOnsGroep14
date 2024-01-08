@@ -30,7 +30,8 @@ Route::get('event/edit/{event_name}',[EventController::class, 'edit'])->name('ev
 Route::post('event/update/{event_name}', [EventController::class, 'update'])->name('event.update')->middleware('auth');
 Route::get('admin/event/adminHome',[EventController::class, 'home'])->name('event.adminHome')->middleware('auth');
 Route::get('admin/event/adminform',[EventController::class, 'adminform'])->name('event.adminform')->middleware('auth');
-Route::delete('admin/event/delete/{event_name}', [EventController::class, 'destroy'])->name('event.destroy')->middleware('auth');
+Route::match(['post', 'delete'], '/event/{event}/toggle-favorite', [EventController::class, 'toggleFavorite'])->name('event.toggleFavorite');
+Route::post('/event/{event}/toggle-favorite', [EventController::class, 'toggleFavorite'])->name('event.toggleFavorite')->middleware('auth');
 
 Auth::routes();
 
