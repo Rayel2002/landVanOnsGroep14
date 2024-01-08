@@ -22,7 +22,15 @@ Route::get('', [EventController::class, 'show'])->name('event.show');
 Route::get('admin', [AdminController::class, 'show'])->name('admin')->middleware('auth');
 Route::get('admin/event/create', [EventController::class, 'create'])->name('event.create')->middleware('auth');
 Route::get('event/show', [EventController::class, 'show'])->name('event.show');
+Route::get('event/getEventData/{event_name}', [EventController::class, 'getEventData'])->name('event.getEventData');
+Route::post('event/registerForEvent/{event_name}', [EventController::class, 'registerForEvent'])->name('event.registerForEvent');
 Route::post('admin/event/store', [EventController::class, 'store'])->name('event.store');
 Route::get('event/index/{event_name}', [EventController::class, 'index'])->name('event.index');
+Route::get('event/edit/{event_name}',[EventController::class, 'edit'])->name('event.edit')->middleware('auth');
+Route::post('event/update/{event_name}', [EventController::class, 'update'])->name('event.update')->middleware('auth');
+Route::get('admin/event/adminHome',[EventController::class, 'home'])->name('event.adminHome')->middleware('auth');
+Route::get('admin/event/adminform',[EventController::class, 'adminform'])->name('event.adminform')->middleware('auth');
+Route::delete('admin/event/delete/{event_name}', [EventController::class, 'destroy'])->name('event.destroy')->middleware('auth');
+
 Auth::routes();
 
