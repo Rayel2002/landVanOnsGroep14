@@ -46,4 +46,8 @@ class User extends Authenticatable
     function events() {
         return $this->belongsToMany(Event::class);
     }
+    public function favorites()
+    {
+        return $this->events();
+    }
 }

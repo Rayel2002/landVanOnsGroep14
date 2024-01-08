@@ -2,14 +2,12 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/event-app-landvanons/tests/Feature" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/event-app-landvanons/tests/Unit" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/event-landvanons-api/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/event-landvanons-api/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
       <sourceFolder url="file://$MODULE_DIR$/event-landvanons-api/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
       <sourceFolder url="file://$MODULE_DIR$/event-landvanons-api/tests" isTestSource="true" packagePrefix="Tests\" />
-      <sourceFolder url="file://$MODULE_DIR$/event-landvanons-api/tests/Feature" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/event-landvanons-api/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/event-app-landvanons/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/event-app-landvanons/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/event-app-landvanons/vendor/dflydev/dot-access-data" />

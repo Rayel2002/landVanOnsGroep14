@@ -1,7 +1,8 @@
 {
     "require": {
         "spatie/laravel-permission": "^6.0",
-        "laravel/ui": "^4.2"
+        "laravel/ui": "^4.2",
+        "stevebauman/location": "^7.1"
     },
     "require-dev": {
         "laravel/dusk": "^7.11"
