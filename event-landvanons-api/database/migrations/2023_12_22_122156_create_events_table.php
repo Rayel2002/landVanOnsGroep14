@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('street_name');
             $table->string('house_number');
             $table->string('postal_code');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->integer('amount_of_volunteers_needed');
             $table->text('description');
             $table->timestamps();

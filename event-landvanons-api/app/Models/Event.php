@@ -22,6 +22,8 @@ class Event extends Model
         'street_name',
         'house_number',
         'postal_code',
+        'latitude',
+        'longitude',
         'amount_of_volunteers_needed',
         'description'
     ];
