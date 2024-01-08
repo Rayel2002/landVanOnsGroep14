@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ConfirmationMail;
 use App\Models\Event;
 use App\Models\User;
 use App\Models\Registration;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Location\Facades\Location;
@@ -17,12 +19,6 @@ class EventController extends Controller
     public function home()
     {
         return view('adminHome');
-    }
-
-    public function filter_event(Request $request) {
-        $events = Event::where('event_name', 'like', "%" . $request->nonFilteredEvent . "%")
-            ->get();
-        return response()->json(['filterEventNames' => $events]);
     }
 
     public function getEventData($event_name)
@@ -51,6 +47,16 @@ class EventController extends Controller
             $registration->user_id = $user->id;
             $registration->save();
 
+            Mail::to($user->email)->send(
+                new ConfirmationMail(
+                    $user->name,
+                    $event->event_name,
+                    $event->begin_time,
+                    $event->end_time,
+                    $event->street_name,
+                    $event->house_number,
+                    $event->postal_code
+                ));
             return back()->withInput()->with('status', 'Je bent aangemeld voor dit evenement! Check je email voor een confirmatie.');
         }
     }

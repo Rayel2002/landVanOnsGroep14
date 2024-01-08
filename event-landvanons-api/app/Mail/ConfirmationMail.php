@@ -9,14 +9,14 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class email extends Mailable
+class ConfirmationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(private $name, private $event_date, private $begin_time, private $end_time, private $address)
+    public function __construct(private $name, private $event_name, private $begin_time, private $end_time, private $street_name, private $house_number, private $postal_code)
     {
         //
     }
@@ -39,10 +39,12 @@ class email extends Mailable
         return new Content(
             view: 'mail.confirmationMail',
             with: ['name' => $this->name,
-                'event_date' => $this->event_date,
+                'event_name' => $this->event_name,
                 'begin_time' => $this->begin_time,
                 'end_time' => $this->end_time,
-                'address' => $this->address]
+                'street_name' => $this->street_name,
+                'house_number' => $this->house_number,
+                'postal_code' => $this->postal_code]
         );
     }
 
