@@ -46,6 +46,7 @@
                             <div class="events">
                                 <a href={{ route('event.index',$event-> event_name) }}><h3>{{ $event->event_name }}</h3>
                                 </a>
+                                <a href={{ route('event.getEventData',$event-> event_name) }}>Aanmelden voor evenement</a>
                                 @can('admin-only')
                                     <a href="{{ route('event.update') }}">Update this event</a>
                                 @endcan
@@ -53,7 +54,9 @@
                             </div>
                         @endforeach
                     @endif
-                    <a href="{{ route('event.adminform') }}">Admin functions</a>
+                    @can('edit-event')
+                        <a href="{{ route('event.adminform') }}">Admin functions</a>
+                    @endcan
                 </div>
             </div>
         </div>

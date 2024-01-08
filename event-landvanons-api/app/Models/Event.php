@@ -27,4 +27,7 @@ class Event extends Model
         'amount_of_volunteers_needed',
         'description'
     ];
+    function users() {
+        return $this->belongsToMany(User::class);
+    }
 }

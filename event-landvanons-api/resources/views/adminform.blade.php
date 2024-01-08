@@ -29,25 +29,29 @@
                             <div class="events">
                                 <a href={{ route('event.index',$event-> event_name) }}><h3>{{ $event->event_name }}</h3>
                                 </a>
-{{--                                @can('admin-only')--}}
-                                    <a href="{{ route('event.edit', $event-> event_name) }}">Update this event</a>
+                                {{--                                @can('admin-only')--}}
+                                <a href="{{ route('event.edit', $event-> event_name) }}">Update this event</a>
                                 <a href="{{ route('event.destroy', $event->event_name) }}" onclick="event.preventDefault();
     if (confirm('Are you sure you want to delete this event?')) document.getElementById('delete-form-{{$event->event_name}}').submit();">
                                     Delete
                                 </a>
-                                <form id="delete-form-{{$event->event_name}}" action="{{ route('event.destroy', ['event_name' => $event->event_name]) }}" method="post" style="display: none;">
+                                <form id="delete-form-{{$event->event_name}}"
+                                      action="{{ route('event.destroy', ['event_name' => $event->event_name]) }}"
+                                      method="post" style="display: none;">
                                     @csrf
                                     @method('delete')
                                 </form>
 
 
-{{--                                @endcan--}}
+                                {{--                                @endcan--}}
                                 <p>{{ $event->begin_time }} - {{ $event->end_time }}</p>
                             </div>
                         @endforeach
                     @endif
                     <a href="{{ route('event.show') }}">User functions</a>
-                    <a href="{{ route('event.adminHome') }}">Admin menu</a>
+                    @can('edit-event')
+                        <a href="{{ route('event.adminHome') }}">Admin menu</a>
+                    @endcan
                 </div>
             </div>
         </div>

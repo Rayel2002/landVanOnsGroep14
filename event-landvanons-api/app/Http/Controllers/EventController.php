@@ -3,24 +3,56 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
+use App\Models\Registration;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 use Stevebauman\Location\Facades\Location;
 use Symfony\Component\Console\Input\Input;
 
 class EventController extends Controller
 {
-
-    public function home() {
+    public function home()
+    {
         return view('adminHome');
     }
-
 
     public function filter_event(Request $request) {
         $events = Event::where('event_name', 'like', "%" . $request->nonFilteredEvent . "%")
             ->get();
         return response()->json(['filterEventNames' => $events]);
+    }
+
+    public function getEventData($event_name)
+    {
+        $event = Event::where('event_name', '=', $event_name)->first();
+        $user = Auth::User();
+        return view('eventRegister', compact('event_name', 'user'))->with('event', $event);
+    }
+
+    public function registerForEvent($event_name, Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+
+        $event = Event::where('event_name', '=', $event_name)->first();
+        $user = User::where('name', '=', $request->name)->first();
+
+//        if registration has event id && user id return to view with status ('user has already signed up')
+        if (Registration::where('user_id', '=', $user->id)->where('event_id', '=', $event->id)->count() !== 0) {
+            return back()->withInput()->with('status', 'Je bent al aangemeld voor dit evenement.');
+        } else {
+            $registration = new Registration;
+            $registration->event_id = $event->id;
+            $registration->user_id = $user->id;
+            $registration->save();
+
+            return back()->withInput()->with('status', 'Je bent aangemeld voor dit evenement! Check je email voor een confirmatie.');
+        }
     }
 
     public function destroy($event_name) {
@@ -40,7 +72,7 @@ class EventController extends Controller
 
     public function index($event_name) {
         $event = Event::where('event_name', '=', $event_name)->first();
-        return view('detail', compact('event_name'))->with('event', $event)->with('success');
+        return view('detail', compact('event_name'))->with('event', $event) ->with('success');
 
     }
 
@@ -106,7 +138,6 @@ class EventController extends Controller
     public function show() {
         $events = Event::where('begin_time', '>', DATE(NOW()))->get();
 
-//        dd($events);
         return view('home')->with('events', $events)->with('filters');
     }
 
