@@ -22,6 +22,19 @@
   text-align: justify;
 }
 
+
+
+.confirm-location {
+  background: #CF8DCD;
+  border-style: solid;
+  box-sizing: border-box;
+  width: 75px;
+  margin-top: 1em;
+  height: 40px;
+  color: white;
+  font-size: 1.1em;
+}
+
 .detail-card {
   width: auto;
   padding-right: 20px;
