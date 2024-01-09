@@ -20,21 +20,38 @@ function EventPage() {
     const showEvents = async () => {
         const response = fetch('http://127.0.0.1:8000/api/v1/events', {
             headers: {
+                'url':'api/v1/events',
                 'accept': 'application/json'
             },
             method: 'GET'
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setEvents(data.data)
             }).catch((error) => (console.log(error)))
 
     }
+    const [searchInput, setSearchInput] = useState('');
+    const [filteredEvents, setFilteredEvents] = useState([])
+    const handleInputChange = (e) => {
+        const searchItem = e.target.value;
+        setSearchInput(searchItem);
+        console.log(searchInput)
+
+        const filteredItems = event.filter((currentEvent) => {
+            console.log(currentEvent)
+            currentEvent.eventName.toLowerCase().includes(searchItem.toLowerCase())
+        })
+        setFilteredEvents(filteredItems);
+        console.log(filteredEvents);
+
+        // console.log("Hello", filteredItems);
+    }
     const eventComponents = event.map((value) => (<EventCards key={value.id} data={value}/>));
     const totalEvents = eventComponents.length;
 
-    console.log(totalEvents)
+    // console.log(totalEvents)
 
     return (
         <section>
@@ -59,7 +76,7 @@ function EventPage() {
                 </div>
                 <div className={"location-section relative left-52"}>
                     <label>Zoeken:</label>
-                    <input type={"text"} className={"border-black border-2 rounded"}/>
+                    <input value={searchInput} onChange={handleInputChange} placeholder={"Type to search"} type={"text"} className={"border-black border-2 rounded"}/>
                 </div>
             </div>
             <div className='event-container ml-72 grid grid-cols-3 gap-3'>

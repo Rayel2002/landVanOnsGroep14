@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import {Routes, Route} from "react-router-dom";
 import Home from "./views/Home";
 import EventPage from "./views/EventPage";
+import Register from "./views/Register";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Routes>
             <Route path="/" element={<Home/>}></Route>
             <Route path="/events" element={<EventPage/>}></Route>
+            <Route path="/register" element={<Register
+            />}></Route>
         </Routes>
 
     </div>
