@@ -22,7 +22,19 @@
   text-align: justify;
 }
 
-
+.register-button {
+  background: #CF8DCD;
+  margin-left: auto;
+  font-size: 0.7em;
+  text-align: center;
+  border-style: solid;
+  box-sizing: border-box;
+  width: 110px;
+  margin-top: 1em;
+  height: 40px;
+  color: white;
+  font-size: 1.1em;
+}
 
 .confirm-location {
   background: #CF8DCD;
