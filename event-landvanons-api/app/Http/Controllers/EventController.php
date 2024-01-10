@@ -147,6 +147,19 @@ class EventController extends Controller
         return view('home')->with('events', $events)->with('filters');
     }
 
+    public function toggleFavorite(Event $event)
+    {
+        $user = Auth::user();
+
+        if ($user->favorites()->where('event_id', $event->id)->exists()) {
+            $user->favorites()->detach($event);
+            return redirect()->back()->with('status', 'Event removed from favorites.');
+        }
+
+        $user->favorites()->attach($event);
+        return redirect()->back()->with('status', 'Event added to favorites.');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
