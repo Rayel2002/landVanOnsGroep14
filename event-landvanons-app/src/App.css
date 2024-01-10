@@ -2,37 +2,62 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card {
+  position: relative;
+  width: 450px;
+  height: auto;
+  border-radius: 8px;
+  background: #8fbc8f;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card-header {
+  background: #2e8b57;
+  padding-top: 7px;
+  height: 50px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.description-section {
+  margin-left: 20px;
+  word-break: break-all;
+  text-align: justify;
+}
+
+.register-button {
+  background: #CF8DCD;
+  margin-left: auto;
+  font-size: 0.7em;
+  text-align: center;
+  border-style: solid;
+  box-sizing: border-box;
+  width: 110px;
+  margin-top: 1em;
+  height: 40px;
   color: white;
+  font-size: 1.1em;
 }
 
-.App-link {
-  color: #61dafb;
+.confirm-location {
+  background: #CF8DCD;
+  border-style: solid;
+  box-sizing: border-box;
+  width: 75px;
+  margin-top: 1em;
+  height: 40px;
+  color: white;
+  font-size: 1.1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.detail-card {
+  width: auto;
+  padding-right: 20px;
+  padding-left: 20px
+}
+
+.description {
+  width: auto;
+}
+
+.rightside-descriptions {
+  position: relative;
+  right: 300px;
 }
