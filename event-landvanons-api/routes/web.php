@@ -34,6 +34,7 @@ Route::delete('admin/event/delete/{event_name}', [EventController::class, 'destr
 Route::get('admin/event/adminHome',[EventController::class, 'home'])->name('event.adminHome')->middleware('auth');
 Route::get('admin/event/adminform',[EventController::class, 'adminform'])->name('event.adminform')->middleware('auth');
 Route::match(['post', 'delete'], '/event/{event}/toggle-favorite', [EventController::class, 'toggleFavorite'])->name('event.toggleFavorite');
+route::get('events/', [EventController::class, 'eventPage'])->name('event.eventPage');
 Route::post('/event/{event}/toggle-favorite', [EventController::class, 'toggleFavorite'])->name('event.toggleFavorite')->middleware('auth');
 
 Route::get('/testroute', [EmailController::class, 'sendEmail']);
