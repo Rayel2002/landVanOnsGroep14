@@ -54,22 +54,22 @@
                                 <p>{{ $event->begin_time }} - {{ $event->end_time }}</p>
 
                                 @auth
-                                    @if (Auth::user()->favorites && Auth::user()->favorites->contains($event))
-                                        <form method="POST" action="{{ route('event.toggleFavorite', $event->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit">
-                                                {{ Auth::user()->favorites->contains($event) ? 'Remove from Favorites' : 'Add to Favorites' }}
-                                            </button>
-                                        </form>
+                                    @php
+                                        $isRegistered = $user->events->contains($event);
+                                    @endphp
 
-                                    @else
-                                        <form method="POST" action="{{ route('event.toggleFavorite', $event->id) }}">
-                                            @csrf
-                                            <button type="submit">Add to Favorites</button>
-                                        </form>
-                                    @endif
+                                    <form method="POST" action="{{ route('event.toggleRegistration', $event->event_name) }}">
+                                        @csrf
+
+                                        @if ($isRegistered)
+                                            @method('DELETE')
+                                            <button type="submit">Unregister from Event</button>
+                                        @else
+                                            <button type="submit">Register for Event</button>
+                                        @endif
+                                    </form>
                                 @endauth
+
                             </div>
                         @endforeach
 
