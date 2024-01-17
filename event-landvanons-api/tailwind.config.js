@@ -6,7 +6,19 @@ export default {
       "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+colors:{
+    'lvo hoofdkleur':'#519238',
+    'lvo-pink': '#CF8DCD',
+    'lvo-purple': '#db3397',
+    'lvo-light-blue': '#83cac6',
+    'lvo-blue': '#00a9dc',
+    'lvo-green':'#76bc21',
+    'lvo-light-green': '#94d02d',
+    'lvo-yellow': '#ffc884',
+    'lvo-orange': '#f87728'
+}
+    },
   },
     plugins: [
         require('@tailwindcss/typography'),
