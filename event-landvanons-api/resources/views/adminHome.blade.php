@@ -26,7 +26,7 @@
                             <a href="{{ route('event.adminform') }}" class="bg-fuchsia-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Admin functions</a>
                         @endcan
                         {{-- Logout Button --}}
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="{{ route('login.blade') }}">
                             @csrf
                             <button type="submit" class="bg-red-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">
                                 Logout
