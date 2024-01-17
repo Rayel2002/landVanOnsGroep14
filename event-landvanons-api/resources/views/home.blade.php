@@ -54,9 +54,17 @@
                                 <p>{{ $event->begin_time }} - {{ $event->end_time }}</p>
 
                                 @auth
-                                    @php
-                                        $isRegistered = $user->events->contains($event);
-                                    @endphp
+                                    @auth
+                                        @if (Auth::user()->favorites && Auth::user()->favorites->contains($event))
+                                            <form method="POST" action="{{ route('event.toggleFavorite', $event->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit">
+                                                    {{ Auth::user()->favorites->contains($event) ? 'Remove from Favorites' : 'Add to Favorites' }}
+                                                </button>
+                                            </form>
+                                            @endif
+                                        @endauth
 
                                     <form method="POST" action="{{ route('event.toggleRegistration', $event->event_name) }}">
                                         @csrf
