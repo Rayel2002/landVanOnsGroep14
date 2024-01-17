@@ -17,6 +17,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
                         <h1 class="text-2xl font-bold mb-4">Homepagina</h1>
                     <div class="flex flex-col items-center p-4">
                         @can('edit-event')
