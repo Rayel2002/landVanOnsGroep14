@@ -20,10 +20,8 @@
         </div>
         <div class="flex pb-5 p-5 mt-3 justify-around">
 {{--            {/*<button><img src={bookmarkIcon}/></button>*/}--}}
-            <form method="'post">
-                @csrf
-                <input type="submit"  value="Inschrijven" id="{{$event->id}}" class="text-white hover:shadow-xl py-2 px-4 rounded mb-2 border border-b font-bold" style="background-color: rgb(219, 51, 151)"></input>
-            </form>
+
+                <button value="Inschrijven" id="{{$event->id}}" class="registerButton text-white hover:shadow-xl py-2 px-4 rounded mb-2 border border-b font-bold" style="background-color: rgb(219, 51, 151)"><h2>Aanmelden</h2></button>
             <div class="flex showcard justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                 <div class="relative w-auto my-6 mx-auto max-w-3xl">
                     <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
