@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <body class="antialiased">
     <div class="container">
@@ -85,8 +84,26 @@
                     @can('edit-event')
                         <a href="{{ route('event.adminform') }}">Admin functions</a>
                     @endcan
+
+                </div>
+            </div>
+            {{--    <div class="h-[100px] mr-6 bg-black w-[2px]}>--}}
+            <form class=" pl-10">
+                <h2 class="font-bold">Locatie invoeren:</h2>
+                <label>Adres:</label>
+                <input type="text" class="border-black border-2 rounded"/>
+                <input type="submit" class="confirm-location" value="Bevestig"/>
+            </form>
+        </div>
+        <div class="location-section relative left-52">
+        </div>
+        </div>
+        <div class='event-container ml-72 grid grid-cols-3 gap-3'>
+            <div class="col-span-2 flex  mt-20 ml-5 mb-14">
+                <div class="table">
+                    @include('partials.eventcards', ['events' => $events])
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 @endsection

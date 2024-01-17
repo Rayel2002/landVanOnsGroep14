@@ -37,13 +37,13 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item p-6 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold bg-lvo-purple">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">Inloggen</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item p-6 mx-6 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold bg-lvo-purple">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">Registreren</a>
                             </li>
                         @endif
                     @else
@@ -51,7 +51,7 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="bg-red-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">
-                                    Logout
+                                    Uitloggen
                                 </button>
                             </form>
                         </li>

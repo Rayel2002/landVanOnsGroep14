@@ -17,22 +17,16 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <h1 class="text-2xl font-bold mb-4">Admin Homepagina</h1>
+                        <h1 class="text-2xl font-bold mb-4">Homepagina</h1>
                     <div class="flex flex-col items-center p-4">
                         @can('edit-event')
-                            <a href="{{ route('event.create') }}" class="bg-fuchsia-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Create new event</a>
+                            <a href="{{ route('event.create') }}" class="bg-fuchsia-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Creëer een nieuw evenement</a>
                         @endcan
                         {{-- <a href="{{ route('event.show') }}" class="bg-fuchsia-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Aanmelden</a> --}}
                         @can('edit-event')
-                            <a href="{{ route('event.adminform') }}" class="bg-fuchsia-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Admin functions</a>
+                            <a href="{{ route('event.adminform') }}" class="bg-fuchsia-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Evenement aanpassen</a>
                         @endcan
-                        {{-- Logout Button --}}
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="bg-red-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">
-                                Logout
-                            </button>
-                        </form>
+                            <a href="{{ route('event.eventPage') }}" class="bg-fuchsia-500 text-white hover:bg-lvo-light-green py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Inschrijven</a>
                     </div>
                 </div>
             </div>

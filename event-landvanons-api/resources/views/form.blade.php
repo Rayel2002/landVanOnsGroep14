@@ -39,15 +39,15 @@
                                                            required>
                                                 </div>
                                                 <div class="form-group p-2">
-                                                    <label for="street_name">straatnaam:</label>
+                                                    <label for="street_name">Straatnaam:</label>
                                                     <input id="street_name" type="text" name="street_name" class="form-control p-2 border border-black" required>
                                                 </div>
                                                 <div class="form-group p-2">
-                                                    <label for="house_number">huisnummer:</label>
+                                                    <label for="house_number">Huisnummer:</label>
                                                     <input id="house_number" type="text" name="house_number" class="form-control p-2 border border-black" required>
                                                 </div>
                                                 <div class="form-group p-2">
-                                                    <label for="postal_code">postcode:</label>
+                                                    <label for="postal_code">Postcode:</label>
                                                     <input id="postal_code" type="text" name="postal_code" class="form-control p-2 border border-black" required
                                                            pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}">
                                                 </div>
