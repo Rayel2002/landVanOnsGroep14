@@ -20,6 +20,11 @@
                         @endif
                     </div>
                     <h1 class="text-2xl font-bold mb-4">Evenementen overzicht</h1>
+                    @can('edit-event')
+                        <a href="{{ route('event.adminHome') }}" class=" text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">terug</a>
+                    @endcan
+                    <br>
+                    <br>
                     {{-- <div class="flex items-center space-x-4 mb-4">
                         <label for="search">Zoek:</label>
                         <input id="search" name="search" type="text">
@@ -49,16 +54,10 @@
                                     </div>
                                     <br>
                                 @endcan
-{{--                                <a href="{{ route('event.show') }}" class="text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">User functions</a>--}}
-                                @can('edit-event')
-                                    <a href="{{ route('event.adminHome') }}" class=" text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Admin menu</a>
-                                @endcan
-                                <br>
-                                <br>
-                            </div>
+
                         @endforeach
                     @endif
-
+                    </div>
                 </div>
             </div>
         </div>
