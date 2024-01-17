@@ -4,9 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserMiddleware
+class CheckUserRoleMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,14 +17,15 @@ class UserMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            if (Auth::user()->roles == 'admin') {
+            if (Auth::user()->roles == 'visitor') {
                 return $next($request);
 
-            } else {
+            } elseif (Auth::user()->roles == 'admin');
+            else {
                 return redirect('/home')->with('message', 'Access denied as you are not admin');
             }
         } else {
-            return redirect('/login')->with('message', 'Login in to access Ticket system portal ');
+            return redirect('/login')->with('message', 'Login in to access event page ');
         }
 
         return $next($request);
