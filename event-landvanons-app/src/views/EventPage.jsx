@@ -48,6 +48,8 @@ function EventPage() {
 
         // console.log("Hello", filteredItems);
     }
+    // console.log(" events: " +event);
+
     const eventComponents = event.map((value) => (<EventCards key={value.id} data={value}/>));
     const totalEvents = eventComponents.length;
 
