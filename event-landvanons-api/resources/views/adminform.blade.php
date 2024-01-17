@@ -35,15 +35,15 @@
                     </div> --}}
                     @if ($events !== null)
                         @foreach ($events as $event)
-                            <div class="events mb-6">
-                                <a href={{ route('event.index', $event->event_name) }} class="">{{ $event->event_name }}</a>
+                            <div class="events">
+                                <a class="text-xl font-bold" href={{ route('event.index', $event->event_name) }}  >{{ $event->event_name }}</a>
                                 @can('edit-event')
-                                    <p class="text-black">{{ $event->begin_time }} - {{ $event->end_time }}</p>
+                                    <p class="text-xl">{{ $event->begin_time }} - {{ $event->end_time }}</p>
                                     <div class="mt-2">
-                                        <a href="{{ route('event.edit', $event->event_name) }}"class="bg-red-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Update this event</a>
+                                        <a href="{{ route('event.edit', $event->event_name) }}"class="bg-red-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Evenement aanpassen</a>
                                         <a href="{{ route('event.destroy', $event->event_name) }}" onclick="event.preventDefault();
                                             if (confirm('Are you sure you want to delete this event?')) document.getElementById('delete-form-{{$event->event_name}}').submit();" class="bg-red-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold bg-red-600">
-                                            Delete
+                                            Verwijderen
                                         </a>
                                         <form id="delete-form-{{$event->event_name}}"
                                               action="{{ route('event.destroy', ['event_name' => $event->event_name]) }}"
@@ -54,10 +54,16 @@
                                     </div>
                                     <br>
                                 @endcan
-
+{{--                                <a href="{{ route('event.show') }}" class="text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">User functions</a>--}}
+                                <br>
+                                <br>
+                            </div>
                         @endforeach
                     @endif
-                    </div>
+                    @can('edit-event')
+                        <a href="{{ route('event.adminHome') }}" class=" text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Admin menu</a>
+                    @endcan
+
                 </div>
             </div>
         </div>

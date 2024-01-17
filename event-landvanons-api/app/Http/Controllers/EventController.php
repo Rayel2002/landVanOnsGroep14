@@ -24,7 +24,7 @@ class EventController extends Controller
     public function eventPage()
     {
         $events = Event::all();
-        return view('pages.eventpage', compact('events'));
+        return view('/home', compact('events'));
     }
 
     public function getEventData($event_name)
