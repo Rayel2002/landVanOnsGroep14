@@ -21,6 +21,12 @@ class EventController extends Controller
         return view('adminHome');
     }
 
+    public function eventPage()
+    {
+        $events = Event::all();
+        return view('pages.eventpage', compact('events'));
+    }
+
     public function getEventData($event_name)
     {
         $event = Event::where('event_name', '=', $event_name)->first();
@@ -61,7 +67,8 @@ class EventController extends Controller
         }
     }
 
-    public function destroy($event_name) {
+    public function destroy($event_name)
+    {
         $event = Event::where('event_name', $event_name)->firstOrFail();
         $event->delete();
 
@@ -70,26 +77,30 @@ class EventController extends Controller
     }
 
 
-    public function adminform() {
+    public function adminform()
+    {
         $events = Event::where('begin_time', '>', DATE(NOW()))->get();
 
         return view('adminform')->with('events', $events);
     }
 
-    public function index($event_name) {
+    public function index($event_name)
+    {
         $event = Event::where('event_name', '=', $event_name)->first();
-        return view('detail', compact('event_name'))->with('event', $event) ->with('success');
+        return view('detail', compact('event_name'))->with('event', $event)->with('success');
 
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create() {
+    public function create()
+    {
         return view('form')->with('date_error');
     }
 
-    public function edit($event_name) {
+    public function edit($event_name)
+    {
         $event = Event::where('event_name', $event_name)->first();
         if (!$event) {
             return redirect()->back()->with('error', 'Event not found');
@@ -97,7 +108,8 @@ class EventController extends Controller
         return view('update', compact('event_name'))->with('date_error')->with('edit_event', $event);
     }
 
-    public function update(Request $request, $event_name) {
+    public function update(Request $request, $event_name)
+    {
         $event = Event::where('event_name', $event_name)->first();
 
         if (!$event) {
@@ -141,7 +153,8 @@ class EventController extends Controller
         return view('detail', compact('requested_name'))->with('success', 'Event updated successfully')->with('event', $event);
     }
 
-    public function show() {
+    public function show()
+    {
         $events = Event::where('begin_time', '>', DATE(NOW()))->get();
 
         return view('home')->with('events', $events)->with('filters');
@@ -163,7 +176,8 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $this->middleware('auth');
 
         // Validate the request data
@@ -212,7 +226,8 @@ class EventController extends Controller
         return Redirect::route('event.show');
     }
 
-    public function filter(Request $request) {
+    public function filter(Request $request)
+    {
         /* $ip = $request->ip(); Dynamic IP address */
         $ip = '162.159.24.227'; /* Static IP address */
         $currentUserInfo = Location::get($ip);
@@ -227,11 +242,11 @@ class EventController extends Controller
                         $currentUserInfo->latitude,
                         $currentUserInfo->longitude,
                         $event->latitude,
-                        $event->longitude) <= (float) $request->input('distance')) {
+                        $event->longitude) <= (float)$request->input('distance')) {
                     array_push($filteredEvents, $event);
                 }
             }
-            return view('home')->with('events', $filteredEvents)->with('filters', array($request->input('distance').'km'));
+            return view('home')->with('events', $filteredEvents)->with('filters', array($request->input('distance') . 'km'));
         } else {
             return view('home')->with('events', $events)->status('Je huidige locatie kan niet gebruikt worden om te filteren.')->with('filters');
         }
@@ -242,7 +257,8 @@ class EventController extends Controller
      * Based on the Haversine formula and this stackoverflow post:
      * https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula
      */
-    function getDistanceFromLatLonInKm($lat1, $lon1, $lat2, $lon2) {
+    function getDistanceFromLatLonInKm($lat1, $lon1, $lat2, $lon2)
+    {
         $R = 6371; // Radius of the earth in km
         $dLat = deg2rad($lat2 - $lat1);
         $dLon = deg2rad($lon2 - $lon1);
@@ -254,7 +270,8 @@ class EventController extends Controller
         return $R * $c; // Distance in km
     }
 
-    function getLanLonFromAddress($streetName, $houseNumber, $postalCode) {
+    function getLanLonFromAddress($streetName, $houseNumber, $postalCode)
+    {
         $address = $streetName . '+'
             . $houseNumber . '+'
             . str_replace(' ', '', $postalCode)
