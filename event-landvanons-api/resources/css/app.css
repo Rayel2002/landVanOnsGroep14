@@ -17,6 +17,10 @@
     height: 50px;
 }
 
+.showcard {
+    visibility: hidden;
+}
+
 .description-section {
     margin-left: 20px;
     word-break: break-all;

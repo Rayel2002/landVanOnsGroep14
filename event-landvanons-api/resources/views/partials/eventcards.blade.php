@@ -19,15 +19,13 @@
             </div>
         </div>
         <div class="flex pb-5 p-5 mt-3 justify-around">
-            {/*<button><img src={bookmarkIcon}/></button>*/}
-            <button class='bg-green-700 text-white'><h2>Inschrijven</h2></button>
-            {showModal ? (
-            <>
-            <div class="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+{{--            {/*<button><img src={bookmarkIcon}/></button>*/}--}}
+            <button id="{{$event->id}}" class=' registerButton bg-green-700 text-white'><h2>Inschrijven</h2></button>
+            <div class="flex showcard justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                 <div class="relative w-auto my-6 mx-auto max-w-3xl">
                     <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                         <div class="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
-                            <h3 class="text-3xl font=semibold">Aangemeld voor evenement</h3>
+                            <h3 class="text-3xl font=semibold">Aangemeld voor evenement: <p>{{$event->event_name}}</p></h3>
                         </div>
                         <div class="relative p-6 flex-auto">
                             <div class={"description-section"}>
@@ -36,9 +34,9 @@
                         </div>
                         <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                             <button
-                                class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
+                                id="closeButton"
+                                class=" closeButton text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
                                 type="button"
-                                }
                             >
                             Close
                             </button>
@@ -46,7 +44,6 @@
                     </div>
                 </div>
             </div>
-        ) : null}
     </div>
 </div>
 <div class="detail-card w-48 shadow-2xl text-center relative mb-10 ">
