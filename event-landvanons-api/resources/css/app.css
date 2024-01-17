@@ -8,7 +8,7 @@
     width: 450px;
     height: auto;
     border-radius: 8px;
-    background: #8fbc8f;
+    background: white;
 }
 
 .card-header {
@@ -41,6 +41,10 @@
     font-size: 1.1em;
 }
 
+.event-container {
+    background-color: #94d02d;
+}
+
 .confirm-location {
     background: #CF8DCD;
     border-style: solid;
@@ -53,6 +57,7 @@
 }
 
 .detail-card {
+    background-color: white;
     width: auto;
     padding-right: 20px;
     padding-left: 20px

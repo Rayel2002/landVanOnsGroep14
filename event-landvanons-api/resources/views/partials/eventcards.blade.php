@@ -1,4 +1,4 @@
-<div class="flex-col justify-between ">
+<div class="flex justify-between ">
     @foreach($events as $key => $event)
     <div class="card shadow-2xl ml-10 mb-10">
         <div class="card-header rounded-t"><h1 class="text-2xl text-white p-3 ">{{$event->event_name}}</h1></div>
