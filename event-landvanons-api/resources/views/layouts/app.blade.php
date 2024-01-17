@@ -36,14 +36,14 @@
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
-                            <li class="nav-item p-5 text-white hover:shadow-xl py-1 px-3 rounded mb-1 border-b font-bold bg-lvo-purple">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+
+                            <li class="nav-item p-6 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold bg-lvo-purple">
+                                <a class="nav-link" href="{{ route('login') }}">Inloggen</a>
                             </li>
                         @endif
-
                         @if (Route::has('register'))
                             <li class="nav-item p-5 mx-5 text-white hover:shadow-xl py-1 px-3 rounded mb-1 border-b font-bold bg-lvo-purple">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Registreren') }}</a>
                             </li>
                         @endif
                     @else
