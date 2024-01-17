@@ -20,7 +20,7 @@
                         <h1 class="text-2xl font-bold mb-4">Homepagina</h1>
                     <div class="flex flex-col items-center p-4">
                         @can('edit-event')
-                            <a href="{{ route('event.create') }}" class="bg-fuchsia-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Creeer een nieuw evenement</a>
+                            <a href="{{ route('event.create') }}" class="bg-fuchsia-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Creëer een nieuw evenement</a>
                         @endcan
                         {{-- <a href="{{ route('event.show') }}" class="bg-fuchsia-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Aanmelden</a> --}}
                         @can('edit-event')
