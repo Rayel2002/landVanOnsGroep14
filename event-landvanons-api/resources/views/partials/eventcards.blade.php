@@ -1,7 +1,7 @@
-<div class="flex justify-between ">
+<div class="flex-col justify-between ">
     @foreach($events as $key => $event)
     <div class="card shadow-2xl ml-10 mb-10">
-        <div class="card-header"><h1 class="text-2xl text-white">{{$event->event_name}}</h1></div>
+        <div class="card-header rounded-t"><h1 class="text-2xl text-white p-3 ">{{$event->event_name}}</h1></div>
         <div class="flex w-96 bg-green-50">
             <img class="w-64 md:[clip-path:polygon(0%_0%,100%_0%,90%_100%,0%_150%)] h-72"
                  src={{asset('/assets/cranberries_plukken.jpg')}}>
@@ -22,7 +22,7 @@
 {{--            {/*<button><img src={bookmarkIcon}/></button>*/}--}}
             <form method="'post">
                 @csrf
-                <input type="submit"  value="Inschrijven" id="{{$event->id}}" class=' registerButton bg-green-700 text-white'></input>
+                <input type="submit"  value="Inschrijven" id="{{$event->id}}" class="text-white hover:shadow-xl py-2 px-4 rounded mb-2 border border-b font-bold" style="background-color: rgb(219, 51, 151)"></input>
             </form>
             <div class="flex showcard justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                 <div class="relative w-auto my-6 mx-auto max-w-3xl">

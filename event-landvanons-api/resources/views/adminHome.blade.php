@@ -17,6 +17,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                        <h1 class="text-2xl font-bold mb-4">Admin Homepagina</h1>
                     <div class="flex flex-col items-center p-4">
                         @can('edit-event')
                             <a href="{{ route('event.create') }}" class="bg-fuchsia-500 text-white hover:shadow-xl py-2 px-4 rounded mb-2 border-b font-bold" style="background-color: rgb(219, 51, 151)">Create new event</a>
