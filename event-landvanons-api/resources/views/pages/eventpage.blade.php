@@ -8,7 +8,7 @@
         </svg>
         <div class="flex mr-40 justify-end ">
             <label class="pr-5 font-bold">Zoeken:</label>
-            <input value="searchInput" placeholder="Type to search" type="text"
+            <input value="evenement..." placeholder="Type to search" type="text"
                    class="flex content-end border-black border-2 rounded"/>
         </div>
         <div class="flex justify-center space-x-16 pb-20">
