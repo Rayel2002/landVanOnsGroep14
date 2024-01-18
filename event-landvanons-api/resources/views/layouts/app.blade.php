@@ -7,10 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Landvanons') }}</title>
+    <title>Land van ons evenementen</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link rel="shortcut icon" href="{{ asset('assets/lvo-logo.png') }}">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
@@ -27,7 +28,7 @@
         <div class="container mx-auto flex items-center">
             <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
                 <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
-                    <img class="object-fit-contain h-32 w-auto" src="{{asset('/assets/lvo-logo.png')}}">
+                    <img alt="#" class="object-fit-contain h-32 w-auto" src="{{asset('/assets/lvo-logo.png')}}">
                 </a>
             </div>
             <div class="flex w-full items-center justify-between md:w-1/2 md:justify-end">
@@ -54,7 +55,6 @@
                                     Uitloggen
                                 </button>
                             </form>
-                        </li>
                     @endguest
                 </ul>
             </div>
